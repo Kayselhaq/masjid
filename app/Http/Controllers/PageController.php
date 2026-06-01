@@ -7,13 +7,14 @@ use App\Models\Kegiatan;
 use App\Models\Pengumuman;
 use App\Models\JadwalSholat;
 use App\Models\Kas;
-
+use App\Models\Galeri;
+use Illuminate\Http\Request;
 class PageController extends Controller
 {
    public function home()
 {
-    $kegiatan = [];
-$pengumuman = [];
+    $kegiatan = Kegiatan::latest()->take(3)->get();
+$pengumuman = Pengumuman::latest()->take(3)->get();
 
     $jadwal = [
         'Fajr' => '-',
@@ -55,12 +56,21 @@ $pengumuman = [];
             'kegiatan' => Kegiatan::all()
         ]);
     }
-
+    public function detailKegiatan($id)
+    {
+        $kegiatan = Kegiatan::findOrFail($id);
+        return view('pages.detail-kegiatan', compact('kegiatan'));
+    }
     public function pengumuman()
     {
-        return view('pages.pengumuman', [
-            'pengumuman' => Pengumuman::all()
-        ]);
+        $allPengumuman = Pengumuman::latest()->get();
+
+    $pengumuman = Pengumuman::latest()->paginate(3);
+
+    return view('pages.pengumuman', compact(
+        'pengumuman',
+        'allPengumuman'
+    ));
     }
 
     public function keuangan()
@@ -160,10 +170,18 @@ public function exportKeuangan()
 
     return view('pages.donasi', compact('kas','totalMasuk','totalKeluar','saldo'));
 }
-    public function galeri()
-    {
-        return view('pages.galeri');
+    public function galeri(\Illuminate\Http\Request $request)
+{
+    $query = \App\Models\Galeri::latest();
+
+    if ($request->kategori) {
+        $query->where('kategori', $request->kategori);
     }
+
+    $galeri = $query->paginate(6);
+
+    return view('pages.galeri', compact('galeri'));
+}
 
     public function detailPengumuman($id)
     {

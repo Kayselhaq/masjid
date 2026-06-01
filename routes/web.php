@@ -8,9 +8,7 @@ Route::get('/kegiatan', [PageController::class, 'kegiatan']);
 Route::get('/kegiatan/{id}', function ($id) {
     return "Detail kegiatan ID: " . $id;
 });
-Route::get('/daftar/{id}', function ($id) {
-    return "Form daftar kegiatan ID: " . $id;
-});
+Route::get('/kegiatan/{id}', [PageController::class, 'detailKegiatan']);
 Route::get('/pengumuman', [PageController::class, 'pengumuman']);
 Route::get('/keuangan', [PageController::class, 'keuangan']);
 Route::get('/galeri', [PageController::class, 'galeri']);

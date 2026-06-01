@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 
 @extends('layouts.app')
 @section('content')
@@ -132,86 +132,132 @@
 </section>
 <!-- Category Filter -->
 <section class="max-w-7xl mx-auto px-6 mb-12">
-<div class="flex flex-wrap items-center justify-center gap-4 py-6 border-y border-outline-variant/30">
-<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md transition-all">Semua Foto</button>
-<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed font-label-md transition-all">Ibadah</button>
-<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed font-label-md transition-all">Pendidikan</button>
-<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed font-label-md transition-all">Sosial</button>
-<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed font-label-md transition-all">Ramadan</button>
-<button class="px-6 py-2 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed font-label-md transition-all">Pemuda</button>
-</div>
+    <div class="flex flex-wrap items-center justify-center gap-4 py-6 border-y border-outline-variant/30">
+
+        {{-- Semua --}}
+        <a href="/galeri"
+           class="px-6 py-2 rounded-full font-label-md transition-all
+           {{ !request('kategori') ? 'bg-primary text-white' : 'bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed' }}">
+            Semua Foto
+        </a>
+
+        {{-- Ibadah --}}
+        <a href="/galeri?kategori=ibadah"
+           class="px-6 py-2 rounded-full font-label-md transition-all
+           {{ request('kategori') == 'ibadah' ? 'bg-primary text-white' : 'bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed' }}">
+            Ibadah
+        </a>
+
+        {{-- Pendidikan --}}
+        <a href="/galeri?kategori=pendidikan"
+           class="px-6 py-2 rounded-full font-label-md transition-all
+           {{ request('kategori') == 'pendidikan' ? 'bg-primary text-white' : 'bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed' }}">
+            Pendidikan
+        </a>
+
+        {{-- Sosial --}}
+        <a href="/galeri?kategori=sosial"
+           class="px-6 py-2 rounded-full font-label-md transition-all
+           {{ request('kategori') == 'sosial' ? 'bg-primary text-white' : 'bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed' }}">
+            Sosial
+        </a>
+
+        {{-- Ramadan --}}
+        <a href="/galeri?kategori=ramadan"
+           class="px-6 py-2 rounded-full font-label-md transition-all
+           {{ request('kategori') == 'ramadan' ? 'bg-primary text-white' : 'bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed' }}">
+            Ramadan
+        </a>
+
+        {{-- Pemuda --}}
+        <a href="/galeri?kategori=pemuda"
+           class="px-6 py-2 rounded-full font-label-md transition-all
+           {{ request('kategori') == 'pemuda' ? 'bg-primary text-white' : 'bg-surface-container-low text-on-surface-variant hover:bg-primary-fixed-dim hover:text-on-primary-fixed' }}">
+            Pemuda
+        </a>
+
+    </div>
 </section>
 <!-- Photo Grid (Bento Style & Asymmetric) -->
-<section class="max-w-7xl mx-auto px-6 pb-section-padding">
-<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-gutter">
-<!-- Large Featured Card -->
-<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-[24px] shadow-sm gallery-card bg-surface-container-highest">
-<img alt="Shalat berjamaah" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Cinematic wide shot of people praying in a modern mosque with soft natural light coming from arched windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA6hTrNF8twn_47J5oqb-kOxfbi1hjTiD7O2hTJH18RHeTn4wDjP9rYtPd8hvVjiDBNGahOgEhMeAqbiwJNczcbpA9gj5PZUpCd_34APEVn7mTiUELRIp4DB0XbbccGU2tYEhiPkrerdlJ3NzKwZJgrS4lxOYoLWw0poMWIFzp-kWhpH3ALjycd8LMs4UVZBKci7nGJPGrm5O_DqP3oz3kCZl2-9wo4CCjktK4jBHIJighoDSudqWNLBk28aCyaa6MLUV1XS-30mwZ"/>
-<div class="overlay-content absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-8">
-<span class="text-primary-fixed font-label-md mb-2">IBADAH</span>
-<h3 class="text-white font-headline-md mb-2">Shalat Tarawih Berjamaah</h3>
-<p class="text-surface-variant/80 font-body-md line-clamp-2">Kebersamaan dalam malam-malam suci Ramadan di ruang utama Masjid Modern.</p>
-</div>
-</div>
-<!-- Medium Card -->
-<div class="md:col-span-2 group relative overflow-hidden rounded-[24px] shadow-sm gallery-card bg-surface-container-highest min-h-[300px]">
-<img alt="Anak mengaji" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Close-up of children reading Quran together in a bright sunlit classroom with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAUzV1-kD-qZbQe97phcso9B04ZhvbU-L-dmP9zdWIWAKSbiKGrALDyRmMyH1Kw-nE99IaWhtPNNHW8JLClyUjbG-Rb_4SyFafiwaqeQGY_jPLVkAxIZtJGePjhD0Q7ru2tuv9PyqIW2GgarI0QJeWWhddDkcZrvG4z0BvFrvMh_exGiEQdG_cN-jSPAOSj8-sXiHD6qfGeNsAGvTeMWCAW3WA0ud73PX0EY7UN-tY155_4e58bKX5tw2rdmc52O60l0l4dadZrRad"/>
-<div class="overlay-content absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-<span class="text-primary-fixed font-label-md mb-1">PENDIDIKAN</span>
-<h3 class="text-white font-headline-md text-xl">Generasi Qur'ani</h3>
-</div>
-</div>
-<!-- Small Card 1 -->
-<div class="group relative overflow-hidden rounded-[24px] shadow-sm gallery-card bg-surface-container-highest min-h-[300px]">
-<img alt="Bakti sosial" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Overhead view of community members sharing traditional food during an outdoor charity event at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUKsE0yuCge-1hFxqptctCu2JjRAqYiuWZHYECdS_CrrNUBArxpdRiDrPZ7WxjVLFzwbu6AtGgPdGlg1LZKT_8hC7-39BXsSJkfh3PelVxdQH-J1yxwOZbOkF0Tuq3YZcooYOxTPGMfV6CdVN3LH9LAqsqBU0R1WU4cfdAX5plcYqL7AqsTwj0hT5_6P6ncrF5X9sbXwxR2xoj916T3Q_PJJd_rgHXWTHGD8CZM-qVGz4SW1eDdN6_1zHAqBvnzpXhzWpAfdLd2bxE"/>
-<div class="overlay-content absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-<span class="text-primary-fixed font-label-md mb-1">SOSIAL</span>
-<h4 class="text-white font-headline-md text-lg">Berbagi Iftar</h4>
-</div>
-</div>
-<!-- Small Card 2 -->
-<div class="group relative overflow-hidden rounded-[24px] shadow-sm gallery-card bg-surface-container-highest min-h-[300px]">
-<img alt="Diskusi pemuda" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Group of diverse young men having a passionate but respectful discussion sitting in a circle in a modern library" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrFizK7bfHRFRFRZ2wqTvgujItux0sojEqWK5VOjZ20uyyvmmtjsJY6udymNYcm8z69nDv2qQYsrGrXucFrINFMxYvYLSd1OJ9xHGSetWMkaw-_Y8PH5UQ_ePag-CSVKJL683ugAzu_4qp4siu0xHvhxbQrevbRywp7twSBMv_jPn5Z9E0zS2IqGTdigpbxyFbKsIim48PxN77tJset_NTRlwS270tv5SmhXQqMPHAc5fRS6BVhQNseTRkuLlkFRvQBCIp6Pc0UoRx"/>
-<div class="overlay-content absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-<span class="text-primary-fixed font-label-md mb-1">PEMUDA</span>
-<h4 class="text-white font-headline-md text-lg">Youth Circle</h4>
-</div>
-</div>
-</div>
-<!-- Second Grid Layout for variety -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-gutter">
-<div class="group relative overflow-hidden rounded-[24px] shadow-sm gallery-card bg-surface-container-highest aspect-[4/5]">
-<img alt="Arsitektur masjid" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Detail of intricate geometric patterns on a modern mosque wall with sunlight creating sharp shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgcRAm6FCeO6aop-Cj98XDcCRtvnau5s32XBoSjyjyKaQNKKpfaFaJm-eE8gxsUu8e40Bjr_ljbFIE6t0Yq81gIwm6TTNrWb-zXhtxqsHzCcQZI6B6FQjS_iSR9GxazxMW4iKcU5g5KNUpzHFuLCDyzuK2x6G1GBjvnqqZoe2_6pSuAyHvPTewaxpOwS5LqBF56TITXKNU7i7SP_LI0OiNBivxeh8ekXUH5Z_Sp7zL6MDgDDpk1d8MOteTCwhVSYw7DfzSYGChhQZm"/>
-<div class="overlay-content absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
-<span class="text-primary-fixed font-label-md mb-1">ARSITEKTUR</span>
-<h4 class="text-white font-headline-md text-lg">Sudut Sakinah</h4>
-</div>
-</div>
-<div class="md:col-span-2 group relative overflow-hidden rounded-[24px] shadow-sm gallery-card bg-surface-container-highest aspect-[16/9]">
-<img alt="Kajian Umum" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wide angle shot of a large audience listening to a speaker in a modern hall with professional stage lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVlkVvbauRGV28PHOk3e-f4mNlPJAhVmAugjSOGUGbBqD4gM35622WSz0lyoh0SGTALNJWIjlhNabwMX61ALlpoPYPtzERRH7VHQh9TbrW-mJtl4vKkHBD04KYbWgr5gCP_mx5bsJPNABABlLQCmZGlygc0G6qfh7NIzO21R3s5HoBEtx4Eowo6oGsgmxD8MRQajTdnYOP2vPGwdzcaPRYlWfWOBgqfuS9cjJJN-yn2Wur6YyLXahfjP96HkYPwR1sA9yjwcq_fX42"/>
-<div class="overlay-content absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/20 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-8">
-<span class="text-primary-fixed font-label-md mb-2">KAJIAN</span>
-<h3 class="text-white font-headline-md mb-2">Seminar Internasional Adab</h3>
-</div>
-</div>
-</div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        @foreach($galeri as $g)
+
+        <div class="group relative overflow-hidden rounded-[28px] h-[420px] bg-slate-200 shadow-md hover:shadow-2xl transition duration-500">
+
+            <!-- IMAGE -->
+            <img 
+                src="{{ $g->gambar }}"
+                alt="{{ $g->judul }}"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+            >
+
+           <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+
+<div class="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 translate-y-6 group-hover:translate-y-0 transition-all duration-300">
+
+                <span class="text-green-300 text-sm font-semibold uppercase tracking-wider">
+                    {{ $g->kategori }}
+                </span>
+
+                <h3 class="text-white text-2xl font-bold mt-2">
+                    {{ $g->judul }}
+                </h3>
+
+                <p class="text-white/80 text-sm mt-2 line-clamp-2">
+                    {{ $g->deskripsi }}
+                </p>
+
+            </div>
+
+        </div>
+
+        @endforeach
+
+    </div>
+
+    <!-- PAGINATION -->
+    @if($galeri->hasMorePages())
+        <div class="mt-14 flex justify-center">
+            <a href="{{ $galeri->nextPageUrl() }}"
+             class="px-8 py-4 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition">
+             Lihat Koleksi Lainnya
+             </a>
+        </div>
+    @endif
+
+</section>
 <!-- Load More -->
-<div class="mt-16 text-center">
-<button class="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-on-primary rounded-full font-label-md transition-all">
-                    Lihat Koleksi Lainnya
-                </button>
-</div>
 </section>
 <!-- Newsletter / CTA -->
-<section class="bg-surface-container-low py-section-padding px-6">
-<div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 rounded-[32px] p-8 md:p-12 shadow-xl shadow-green-900/5 text-center">
-<h2 class="font-headline-lg text-headline-lg mb-4">Ingin Mengetahui Kegiatan Kami?</h2>
-<p class="text-on-surface-variant font-body-lg mb-8">Berlangganan buletin kami untuk mendapatkan update foto dan jadwal kegiatan terbaru langsung di email Anda.</p>
-<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-<input class="flex-1 bg-surface-container-highest border-none rounded-full px-6 py-4 focus:ring-2 focus:ring-primary outline-none font-body-md" placeholder="Email Anda" type="email"/>
-<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-md hover:opacity-90 transition-all">Daftar Sekarang</button>
-</form>
-</div>
+<section class="bg-primary-fixed/30 py-24 px-6 mt-24">
+    <div class="max-w-5xl mx-auto bg-white rounded-[40px] p-16 text-center shadow-sm">
+
+        <h2 class="font-display-sm text-display-sm text-on-surface mb-6">
+            Ingin Mengikuti Kegiatan Kami?
+        </h2>
+
+        <p class="font-body-lg text-body-lg text-outline max-w-3xl mx-auto mb-10">
+            Dapatkan informasi terbaru seputar kajian, kegiatan sosial,
+            dan agenda masjid lainnya melalui halaman pengumuman kami.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/pengumuman"
+               class="px-8 py-4 rounded-full bg-primary text-white font-semibold hover:opacity-90 transition">
+                Lihat Pengumuman
+            </a>
+
+            <a href="https://wa.me/6281234567890"
+                    target="_blank"
+                    class="px-8 py-4 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition">
+                    Hubungi via WhatsApp
+            </a>
+        </div>
+
+    </div>
 </section>
 </main>
 <!-- Footer -->

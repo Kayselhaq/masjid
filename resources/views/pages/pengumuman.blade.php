@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 
 @extends('layouts.app')
 @section('content')
@@ -109,7 +109,7 @@
         }
     </style>
 
-<body class="bg-background font-body-md text-on-background">
+
 <!-- TopNavBar -->
 
 <main class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
@@ -122,35 +122,74 @@
 </header>
 <!-- Bento Grid / Asymmetric Layout for Announcements -->
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-<!-- Featured / Important Announcement -->
-<article class="md:col-span-8 group relative overflow-hidden rounded-[24px] bg-white shadow-xl shadow-primary/5 border border-slate-100 p-8 transition-transform hover:-translate-y-1">
-<div class="absolute top-0 left-0 w-2 h-full bg-secondary"></div>
-<div class="flex flex-col h-full">
-<div class="flex items-center justify-between mb-6">
-<span class="flex items-center gap-2 bg-secondary-container text-on-secondary-fixed font-label-md text-label-md px-4 py-1.5 rounded-full">
-<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">priority_high</span>
-                            PENTING
-                        </span>
-<time class="font-label-md text-label-md text-outline">12 Oktober 2023</time>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4 group-hover:text-primary transition-colors">Renovasi Area Wudhu dan Perluasan Ruang Utama</h2>
-<p class="font-body-lg text-body-lg text-outline mb-8 leading-relaxed">
-                        Kami menginformasikan bahwa mulai minggu depan akan dilakukan renovasi total pada area wudhu pria dan wanita. Selama masa pembangunan, akses masuk akan dialihkan melalui pintu samping utara. Mohon maaf atas ketidaknyamanannya dalam beribadah.
-                    </p>
-<div class="mt-auto flex items-center justify-between">
-<div class="flex items-center gap-4">
-<span class="inline-flex items-center gap-1.5 text-primary font-label-md text-label-md">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-                                Aktif
-                            </span>
-</div>
-<button class="flex items-center gap-2 font-label-md text-label-md text-primary hover:gap-3 transition-all">
-                            Baca Selengkapnya
-                            <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-</div>
+@php
+$featured = $pengumuman->first();
+@endphp
+
+@if($featured)
+
+<article class="md:col-span-8 bg-white rounded-[24px] overflow-hidden shadow-xl border border-slate-100">
+
+    {{-- IMAGE --}}
+    <div class="w-full h-[320px] bg-slate-200">
+
+        <img 
+            src="{{ $featured->gambar }}"
+            alt="{{ $featured->judul }}"
+            class="w-full h-full object-cover"
+        >
+
+    </div>
+
+    {{-- CONTENT --}}
+    <div class="p-8">
+
+        <div class="flex items-center justify-between mb-6">
+
+            <span class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-fixed text-sm font-semibold">
+
+                {{ strtoupper($featured->status) }}
+
+            </span>
+
+            <time class="text-sm text-gray-500">
+
+                {{ \Carbon\Carbon::parse($featured->tanggal)->translatedFormat('d F Y') }}
+
+            </time>
+
+        </div>
+
+        <h2 class="text-3xl font-bold text-slate-800 mb-4">
+
+            {{ $featured->judul }}
+
+        </h2>
+
+        <p class="text-gray-600 leading-relaxed mb-8">
+
+            {{ \Illuminate\Support\Str::limit($featured->isi, 250) }}
+
+        </p>
+
+        <a 
+            href="{{ url('/pengumuman/' . $featured->id) }}"
+            class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+        >
+
+            Baca Selengkapnya
+
+            <span class="material-symbols-outlined">
+                arrow_forward
+            </span>
+
+        </a>
+
+    </div>
+
 </article>
+
+@endif
 <!-- Status & Filter Sidebar (Hidden on Mobile) -->
 <aside class="hidden md:flex md:col-span-4 flex-col gap-6">
 <div class="bg-surface-container-low rounded-[24px] p-6">
@@ -158,11 +197,11 @@
 <div class="space-y-4">
 <div class="flex justify-between items-center p-4 bg-white rounded-xl">
 <span class="font-label-md text-label-md text-outline">Total Pengumuman</span>
-<span class="font-headline-md text-headline-md text-primary">24</span>
+<span class="font-headline-md text-headline-md text-primary">{{ $allPengumuman->count() }}</span>
 </div>
 <div class="flex justify-between items-center p-4 bg-white rounded-xl">
 <span class="font-label-md text-label-md text-outline">Aktif</span>
-<span class="font-headline-md text-headline-md text-secondary">8</span>
+<span class="font-headline-md text-headline-md text-secondary">{{ $allPengumuman->where('status', 'aktif')->count() }}</span>
 </div>
 </div>
 </div>
@@ -175,70 +214,76 @@
 </aside>
 <!-- List of Secondary Announcements -->
 <div class="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
-<!-- Announcement Card 1 -->
-<article class="bg-white rounded-[24px] p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-<div class="flex justify-between items-start mb-6">
-<span class="bg-surface-container text-on-surface font-label-md text-label-md px-3 py-1 rounded-full">Kegiatan</span>
-<time class="font-label-md text-label-md text-outline">08 Okt</time>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Penerimaan Zakat Fitrah Digital</h3>
-<p class="font-body-md text-body-md text-outline mb-6 line-clamp-3">
-                        Masjid Modern kini menyediakan layanan pembayaran zakat fitrah melalui QRIS dan Transfer Bank untuk kemudahan jamaah.
-                    </p>
-<div class="flex items-center justify-between pt-4 border-t border-slate-50">
-<span class="inline-flex items-center gap-1.5 text-primary font-label-md text-label-md">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-                            Aktif
-                        </span>
-<span class="material-symbols-outlined text-outline">open_in_new</span>
-</div>
-</article>
-<!-- Announcement Card 2 (Inactive) -->
-<article class="bg-white rounded-[24px] p-8 border border-slate-100 shadow-sm opacity-75 grayscale-[0.5]">
-<div class="flex justify-between items-start mb-6">
-<span class="bg-surface-container text-on-surface font-label-md text-label-md px-3 py-1 rounded-full">Kajian</span>
-<time class="font-label-md text-label-md text-outline">30 Sep</time>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Tabligh Akbar: Hijrah Digital</h3>
-<p class="font-body-md text-body-md text-outline mb-6 line-clamp-3">
-                        Kajian rutin bulanan dengan tema pemanfaatan teknologi untuk dakwah Islamiyah di era modern bersama Ustaz Dr. Fulan.
-                    </p>
-<div class="flex items-center justify-between pt-4 border-t border-slate-50">
-<span class="inline-flex items-center gap-1.5 text-outline font-label-md text-label-md">
-<span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                            Nonaktif
-                        </span>
-<span class="material-symbols-outlined text-outline">history</span>
-</div>
-</article>
-<!-- Announcement Card 3 -->
-<article class="bg-white rounded-[24px] p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-<div class="flex justify-between items-start mb-6">
-<span class="bg-surface-container text-on-surface font-label-md text-label-md px-3 py-1 rounded-full">Donasi</span>
-<time class="font-label-md text-label-md text-outline">25 Sep</time>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Laporan Keuangan Masjid September</h3>
-<p class="font-body-md text-body-md text-outline mb-6 line-clamp-3">
-                        Transparansi adalah kunci. Klik untuk melihat detail pemasukan dan pengeluaran operasional masjid bulan September 2023.
-                    </p>
-<div class="flex items-center justify-between pt-4 border-t border-slate-50">
-<span class="inline-flex items-center gap-1.5 text-primary font-label-md text-label-md">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-                            Aktif
-                        </span>
-<span class="material-symbols-outlined text-outline">download</span>
-</div>
-</article>
-</div>
+<div class="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
+
+@foreach($pengumuman->skip(1) as $p)
+
+<a 
+    href="{{ url('/pengumuman/' . $p->id) }}"
+    class="block bg-white rounded-[24px] p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow hover:-translate-y-1 duration-300"
+>
+
+    {{-- HEADER --}}
+    <div class="flex justify-between items-start mb-6">
+
+        <span class="bg-surface-container text-on-surface font-label-md text-label-md px-3 py-1 rounded-full">
+
+            {{ ucfirst($p->status) }}
+
+        </span>
+
+        <time class="font-label-md text-label-md text-outline">
+
+            {{ \Carbon\Carbon::parse($p->tanggal)->translatedFormat('d M') }}
+
+        </time>
+
+    </div>
+
+    {{-- TITLE --}}
+    <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
+
+        {{ $p->judul }}
+
+    </h3>
+
+    {{-- DESC --}}
+    <p class="font-body-md text-body-md text-outline mb-6 line-clamp-3">
+
+        {{ \Illuminate\Support\Str::limit($p->isi, 120) }}
+
+    </p>
+
+    {{-- FOOTER --}}
+    <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+
+        <span class="inline-flex items-center gap-1.5 text-primary font-label-md text-label-md">
+
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+
+            {{ ucfirst($p->status) }}
+
+        </span>
+
+        <span class="material-symbols-outlined text-outline">
+            open_in_new
+        </span>
+
+    </div>
+
+</a>
+
+@endforeach
+
 </div>
 <!-- Load More Section -->
-<div class="mt-16 flex justify-center">
-<button class="bg-transparent border-2 border-primary text-primary px-10 py-3 rounded-full font-label-md text-label-md hover:bg-primary/5 transition-all">
-                Tampilkan Lebih Banyak
-            </button>
+
+<div class="mt-12 flex justify-center">
+    {{ $pengumuman->links() }}
+
 </div>
 </main>
 <!-- Footer -->
 
-</body>
+
 @endsection

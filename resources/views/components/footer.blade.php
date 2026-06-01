@@ -4,39 +4,168 @@
 <div class="md:col-span-1">
 <div class="text-lg font-bold text-green-700 dark:text-green-500 font-headline-lg mb-6">Masjid Modern</div>
 <p class="font-body-md text-body-md text-slate-500 mb-6">Pusat ibadah dan edukasi yang mengedepankan nilai-nilai keislaman melalui sentuhan teknologi modern untuk kemajuan ummah.</p>
-<div class="flex gap-4">
-<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
-<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
-<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<div class="flex items-center gap-5 mt-8">
+
+    <a href="https://masjidabbas.com"
+       target="_blank"
+       class="text-slate-400 hover:text-primary transition-all duration-300 hover:scale-110">
+        <i class="fa-solid fa-globe text-2xl"></i>
+    </a>
+
+    <a href="https://instagram.com/masjidabbas"
+       target="_blank"
+       class="text-slate-400 hover:text-primary transition-all duration-300 hover:scale-110">
+        <i class="fa-brands fa-instagram text-2xl"></i>
+    </a>
+
+    <a href="https://wa.me/?text=https://masjid.test"
+       target="_blank"
+       class="text-slate-400 hover:text-primary transition-all duration-300 hover:scale-110">
+        <i class="fa-solid fa-share-nodes text-2xl"></i>
+    </a>
+
 </div>
+</div>
+{{-- NAVIGASI --}}
+<div>
+    <h4 class="font-label-md text-label-md text-on-surface mb-6">
+        Navigasi
+    </h4>
+
+    <div class="space-y-2">
+
+        <a href="/"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Home
+        </a>
+
+        <br>
+
+        <a href="/"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Profil
+        </a>
+
+        <br>
+
+        <a href="/"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Kegiatan
+        </a>
+
+        <br>
+
+        <a href="/"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Pengumuman
+        </a>
+
+        <br>
+
+        <a href="/"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Keuangan
+        </a>
+
+        <br>
+
+        <a href="/"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Galeri
+        </a>
+
+    </div>
+</div>
+
+
+
+{{-- LEGAL --}}
+<div>
+    <h4 class="font-label-md text-label-md text-on-surface mb-6">
+        Legal
+    </h4>
+
+    <div class="space-y-2">
+
+        <a href="#"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Kebijakan Privasi
+        </a>
+
+        <br>
+
+        <a href="#"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Syarat & Ketentuan
+        </a>
+
+        <br>
+
+        <a href="#"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Peta Situs
+        </a>
+
+        <br>
+
+        <a href="https://wa.me/6281234567890"
+        target="_blank"
+        class="relative inline-block text-slate-500 hover:text-primary transition-all duration-300
+        after:content-[''] after:absolute after:w-0 after:h-[2px]
+        after:bg-primary after:left-0 after:-bottom-1
+        after:transition-all after:duration-300 hover:after:w-full">
+            Hubungi Kami
+        </a>
+
+    </div>
 </div>
 <div>
-<h4 class="font-label-md text-label-md text-on-surface mb-6">Navigasi</h4>
-<ul class="space-y-4">
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Home</a></li>
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Profil</a></li>
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Kegiatan</a></li>
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Donasi</a></li>
-</ul>
+
+<h4 class="font-label-md text-label-md text-on-surface mb-6">
+    Lokasi Kami
+</h4>
+
+<div class="rounded-xl overflow-hidden w-full h-40 mb-4">
+
+    <iframe
+        src="https://www.google.com/maps?q=-6.380933709300458, 106.80710674990162&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+
 </div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface mb-6">Legal</h4>
-<ul class="space-y-4">
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Kebijakan Privasi</a></li>
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Syarat &amp; Ketentuan</a></li>
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Peta Situs</a></li>
-<li><a class="font-label-md text-label-md text-slate-500 hover:text-green-600 hover:underline transition-all" href="#">Hubungi Kami</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface mb-6">Lokasi Kami</h4>
-<div class="rounded-xl overflow-hidden h-32 w-full mb-4 bg-slate-200">
-<img class="w-full h-full object-cover opacity-80" data-alt="Minimalist stylized map of a city showing urban planning and green spaces" data-location="Jakarta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA8oKODWzvhfFjBCS3bFC7oEcZ3Di2JEyREFA3iWA88yfkc_LXoVFN6ys45QqmElGJ1IujUdbPDibxhmFFIuq_QULYwvFEHCAEA6ZWwSpgzDTg9mUr2gTUKpHEX2cFbjx_5FGZiGeY3QBEoLxlk_dzjyzfDuMsjje07hTgaGhZ7xl886lqJXBzL6IeQtrxqS5hY2OHIvEfCPx7JTzDwiQaAXsbRdMcO-C2oJpRXmNBEelOOzwDyMauFTTFmYBF_7Bn8yj8p8dL5U8G"/>
-</div>
-<p class="font-label-md text-label-md text-slate-500">Jl. Teknologi Islam No. 45, Jakarta Selatan, Indonesia 12345</p>
-</div>
-</div>
-<div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 dark:border-slate-800">
-<p class="font-body-md text-body-md text-slate-500 text-center">© 2024 Masjid Modern. Membangun Ummah dengan Teknologi.</p>
-</div>
+
+<p class="font-label-md text-label-md text-slate-500">
+    Depok, Jawa Barat
+</p>
 </footer>

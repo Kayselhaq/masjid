@@ -6,17 +6,61 @@
         </div>
 
         <div class="hidden md:flex items-center gap-8">
-            <a href="{{ url('/') }}">Home</a>
-            <a href="{{ url('/profil') }}">Profil</a>
-            <a href="{{ url('/kegiatan') }}">Kegiatan</a>
-            <a href="{{ url('/pengumuman') }}">Pengumuman</a>
-            <a href="{{ url('/keuangan') }}">Keuangan</a>
-            <a href="{{ url('/galeri') }}">Galeri</a>
-        </div>
 
-        <a href="#" class="bg-green-600 text-white px-6 py-2 rounded-full">
+    <a href="/"
+    class="{{ request()->is('/') 
+    ? 'text-primary font-semibold' 
+    : 'text-slate-700' }}
+    hover:text-primary transition-all duration-300">
+        Home
+    </a>
+
+    <a href="/profil"
+    class="{{ request()->is('profil') 
+    ? 'text-primary font-semibold' 
+    : 'text-slate-700' }}
+    hover:text-primary transition-all duration-300">
+        Profil
+    </a>
+
+    <a href="/kegiatan"
+    class="{{ request()->is('kegiatan') 
+    ? 'text-primary font-semibold' 
+    : 'text-slate-700' }}
+    hover:text-primary transition-all duration-300">
+        Kegiatan
+    </a>
+
+    <a href="/pengumuman"
+    class="{{ request()->is('pengumuman') || request()->is('pengumuman/*')
+    ? 'text-primary font-semibold' 
+    : 'text-slate-700' }}
+    hover:text-primary transition-all duration-300">
+        Pengumuman
+    </a>
+
+    <a href="/keuangan"
+    class="{{ request()->is('keuangan') 
+    ? 'text-primary font-semibold' 
+    : 'text-slate-700' }}
+    hover:text-primary transition-all duration-300">
+        Keuangan
+    </a>
+
+    <a href="/galeri"
+    class="{{ request()->is('galeri') || request()->is('galeri/*')
+    ? 'text-primary font-semibold' 
+    : 'text-slate-700' }}
+    hover:text-primary transition-all duration-300">
+        Galeri
+    </a>
+
+</div>
+
+        <a href="https://wa.me/6281234567890"
+            target="_blank"
+            class="bg-primary text-white px-6 py-3 rounded-full">
             Kontak Kami
         </a>
-
     </nav>
 </header>
