@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Kegiatan extends Model
 {
     protected $fillable = [
-    'judul',
-    'deskripsi',
-    'tanggal',
-    'lokasi'
-];
+        'judul',
+        'deskripsi',
+        'tanggal',
+        'lokasi',
+        'kategori',
+        'gambar',
+        'link_daftar',
+    ];
 }

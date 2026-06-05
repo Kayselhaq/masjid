@@ -63,20 +63,22 @@
             {{-- BUTTON --}}
             <div class="mt-12 flex flex-wrap gap-4">
 
-                <a 
-                    href="{{ $kegiatan->link_daftar }}"
-                    target="_blank"
-                    class="px-8 py-4 rounded-full border border-gray-300 hover:bg-gray-100 transition"
-                >
-                    Kembali
-                </a>
+                    <a
+                        href="{{ url('/kegiatan') }}"
+                        class="px-8 py-4 rounded-full border border-gray-300 hover:bg-gray-100 transition"
+                    >
+                          Kembali
+                    </a>
 
-                <a 
-                    href="/daftar/{{ $kegiatan->id }}"
-                    class="px-8 py-4 rounded-full bg-green-600 hover:bg-green-700 text-white transition"
-                >
-                    Daftar Sekarang
-                </a>
+                @if($kegiatan->link_daftar)    
+                    <a
+                        href="{{ $kegiatan->link_daftar }}"
+                        target="_blank"
+                        class="px-8 py-4 rounded-full bg-green-600 hover:bg-green-700 text-white transition"
+                    >
+                          Daftar Sekarang
+                    </a>
+                @endif
 
             </div>
 

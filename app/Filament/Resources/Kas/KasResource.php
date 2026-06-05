@@ -18,7 +18,9 @@ class KasResource extends Resource
 {
     protected static ?string $model = Kas::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBanknotes;
+
+    protected static ?int $navigationSort = 4;
 
     protected static ?string $recordTitleAttribute = 'keterangan';
 
@@ -30,6 +32,7 @@ class KasResource extends Resource
     public static function table(Table $table): Table
     {
         return KasTable::configure($table);
+        
     }
 
     public static function getRelations(): array

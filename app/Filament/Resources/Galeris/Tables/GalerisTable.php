@@ -6,10 +6,9 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\ImageColumn;
-
+use Filament\Tables\Columns\TextColumn;
 
 class GalerisTable
 {
@@ -18,18 +17,24 @@ class GalerisTable
         return $table
             ->columns([
 
-                ImageColumn::make('gambar'),
+                ImageColumn::make('gambar')
+                    ->disk('public')
+                    ->square()
+                    ->size(80),
 
-                Tables\Columns\TextColumn::make('judul')
+                TextColumn::make('judul')
+                    ->searchable()
+                    ->sortable(),
+
+                TextColumn::make('kategori')
+                    ->badge()
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('kategori')
-                    ->badge(),
+                TextColumn::make('created_at')
+                    ->dateTime('d M Y H:i')
+                    ->sortable(),
 
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-
-        ])
+            ])
             ->filters([
                 //
             ])

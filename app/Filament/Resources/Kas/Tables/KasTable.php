@@ -15,25 +15,41 @@ class KasTable
         return $table
             ->columns([
                 TextColumn::make('tanggal')
-                    ->date()
+                    ->date('d M Y')
                     ->sortable(),
+
                 TextColumn::make('keterangan')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(40),
+
                 TextColumn::make('jenis')
-                    ->badge(),
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'masuk' => 'success',
+                        'keluar' => 'danger',
+                        default => 'gray',
+                    }),
+
+                TextColumn::make('kategori')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'operasional' => 'warning',
+                        'pembangunan' => 'info',
+                        'sosial' => 'success',
+                        default => 'gray',
+                    }),
+
                 TextColumn::make('nominal')
-                    ->numeric()
+                    ->money('IDR')
                     ->sortable(),
+
                 TextColumn::make('created_at')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('kategori')
-                    ->searchable(),
             ])
             ->filters([
                 //

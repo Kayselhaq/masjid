@@ -130,28 +130,37 @@ $pengumuman = Pengumuman::latest()->take(3)->get();
 }
 public function exportKeuangan()
 {
-    $data = \App\Models\Kas::latest()->get();
+    $data = Kas::latest()->get();
 
     $filename = "laporan_keuangan.csv";
 
     $headers = [
-        "Content-type" => "text/csv",
-        "Content-Disposition" => "attachment; filename=$filename",
+        "Content-Type" => "text/csv",
+        "Content-Disposition" => "attachment; filename={$filename}",
     ];
 
     $callback = function () use ($data) {
+
         $file = fopen('php://output', 'w');
 
-        // Header kolom
-        fputcsv($file, ['Tanggal', 'Keterangan', 'Kategori', 'Jumlah']);
+        fputcsv($file, [
+            'Tanggal',
+            'Keterangan',
+            'Jenis',
+            'Kategori',
+            'Nominal'
+        ]);
 
         foreach ($data as $row) {
+
             fputcsv($file, [
-                $row->created_at,
+                $row->tanggal,
                 $row->keterangan,
+                $row->jenis,
                 $row->kategori,
-                $row->jumlah
+                $row->nominal,
             ]);
+
         }
 
         fclose($file);

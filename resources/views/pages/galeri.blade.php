@@ -189,7 +189,7 @@
 
             <!-- IMAGE -->
             <img 
-                src="{{ $g->gambar }}"
+                src="{{ asset('storage/'.$g->gambar) }}"
                 alt="{{ $g->judul }}"
                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
             >

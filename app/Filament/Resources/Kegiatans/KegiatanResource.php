@@ -18,7 +18,15 @@ class KegiatanResource extends Resource
 {
     protected static ?string $model = Kegiatan::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCalendarDays;
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $navigationLabel = 'Kegiatan';
+
+    protected static ?string $pluralModelLabel = 'Kegiatan';
+
+    
 
     protected static ?string $recordTitleAttribute = 'judul';
 

@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Pengumumen\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -14,19 +15,32 @@ class PengumumenTable
     {
         return $table
             ->columns([
+                ImageColumn::make('gambar')
+                    ->disk('public')
+                    ->label('Gambar')
+                    ->square(),
+
                 TextColumn::make('judul')
-                    ->searchable(),
-                TextColumn::make('gambar')
-                    ->searchable(),
-                TextColumn::make('tanggal')
-                    ->date()
+                    ->searchable()
                     ->sortable(),
+
+                TextColumn::make('tanggal')
+                    ->date('d M Y')
+                    ->sortable(),
+
                 TextColumn::make('status')
-                    ->searchable(),
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'aktif' => 'success',
+                        'nonaktif' => 'danger',
+                        default => 'gray',
+                    }),
+
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()

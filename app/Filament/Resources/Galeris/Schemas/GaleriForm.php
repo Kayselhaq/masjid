@@ -13,24 +13,21 @@ class GaleriForm
             ->components([
 
                 Forms\Components\TextInput::make('judul')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
 
                 Forms\Components\Textarea::make('deskripsi')
-                    ->rows(4),
+                    ->rows(4)
+                    ->columnSpanFull(),
 
-                Forms\Components\Select::make('kategori')
-                    ->options([
-                        'ibadah' => 'Ibadah',
-                        'pendidikan' => 'Pendidikan',
-                        'sosial' => 'Sosial',
-                        'ramadan' => 'Ramadan',
-                        'pemuda' => 'Pemuda',
-                    ])
-                    ->required(),
+                Forms\Components\TextInput::make('kategori')
+                     ->required(),
 
                 Forms\Components\FileUpload::make('gambar')
                     ->image()
                     ->directory('galeri')
+                    ->disk('public')
+                    ->imageEditor()
                     ->required(),
 
             ]);

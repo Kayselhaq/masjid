@@ -15,15 +15,30 @@ class KasForm
             ->components([
                 DatePicker::make('tanggal')
                     ->required(),
+
                 TextInput::make('keterangan')
-                    ->required(),
-                Select::make('jenis')
-                    ->options(['masuk' => 'Masuk', 'keluar' => 'Keluar'])
-                    ->required(),
-                TextInput::make('nominal')
                     ->required()
-                    ->numeric(),
-                TextInput::make('kategori'),
+                    ->maxLength(255),
+
+                Select::make('jenis')
+                    ->options([
+                        'masuk' => 'Kas Masuk',
+                        'keluar' => 'Kas Keluar',
+                    ])
+                    ->required(),
+
+                TextInput::make('nominal')
+                    ->numeric()
+                    ->prefix('Rp')
+                    ->required(),
+
+                Select::make('kategori')
+                    ->options([
+                        'operasional' => 'Operasional',
+                        'pembangunan' => 'Pembangunan',
+                        'sosial' => 'Sosial',
+                    ])
+                    ->required(),
             ]);
     }
 }
